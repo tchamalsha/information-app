@@ -1,18 +1,15 @@
 package com.codebind;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-
 public class Person {
     private String name;
     private String id;
     private String city;
-    private int salary;
+    private String salary;
     private String joinedDate;
 
 
 
-    public Person(String name, String id, String city, int salary, String joinedDate) {
+    public Person(String name, String id, String city, String salary, String joinedDate) {
         this.name = name;
         this.id = id;
         this.city = city;
@@ -43,11 +40,11 @@ public class Person {
         this.city = city;
     }
 
-    public int getSalary() {
+    public String getSalary() {
         return salary;
     }
 
-    public void setSalary(int salary) {
+    public void setSalary(String salary) {
         this.salary = salary;
     }
 

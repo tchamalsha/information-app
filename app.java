@@ -55,7 +55,16 @@ public class App extends JFrame {
         peopleList.addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
+                int personNumber= peopleList.getSelectedIndex();
+                if(personNumber>=0){
+                    Person p =people.get(personNumber);
+                    nameText.setText(p.getName());
+                    idText.setText(p.getId());
+                    cityText.setText(p.getCity());
+                    dateText.setText(p.getJoinedDate());
+                    salaryText.setText(p.getSalary());
 
+                }
             }
         });
     }
@@ -76,9 +85,9 @@ public class App extends JFrame {
         App screen = new App();
         screen.setVisible(true);
 
-        Person tharushi =new Person("tharushi","1654879","gampaha",156247,"2/3/2020");
-        Person chamalsha =new Person("chamalsha","16548279","kadawatha",156247,"7/3/2020");
-        Person nisansala =new Person("nisansala","16541279","meegamuwwa",156247,"9/3/2020");
+        Person tharushi =new Person("tharushi","1654879","gampaha","156247","2/3/2020");
+        Person chamalsha =new Person("chamalsha","16548279","kadawatha","156247","7/3/2020");
+        Person nisansala =new Person("nisansala","16541279","meegamuwwa","156247","9/3/2020");
 
         screen.addPerson(tharushi);
         screen.addPerson(chamalsha);
