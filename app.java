@@ -5,6 +5,8 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
 
 
@@ -51,6 +53,12 @@ public class App extends JFrame {
                 p.setCity(cityText.getText());
                 p.setJoinedDate(dateText.getText());
                 refreshPeopleList();
+                refreshEditFile(nameText.getText(), idText.getText(), cityText.getText(), salaryText.getText(), dateText.getText());
+                nameText.setText("");
+                idText.setText("");
+                cityText.setText("");
+                salaryText.setText("");
+                dateText.setText("");
             }
             }
         });
@@ -64,6 +72,11 @@ public class App extends JFrame {
                         salaryText.getText(),
                         dateText.getText()
                 );
+                refreshNewFile(nameText.getText(),
+                        idText.getText(),
+                        cityText.getText(),
+                        salaryText.getText(),
+                        dateText.getText());
                 people.add(p);
                 refreshPeopleList();
                 nameText.setText("");
@@ -92,6 +105,49 @@ public class App extends JFrame {
             }
         });
     }
+    public void refreshEditFile(String name, String id, String city, String salary, String joinedDate){
+        try {
+            File objFile = new File("C:\\Users\\Lapstore.lk\\IdeaProjects\\information system\\src\\com\\codebind\\Editdata.txt");
+            if(objFile.exists()==false) {
+                if (objFile.createNewFile()) {
+                    System.out.println("File created");
+                } else {
+                    System.out.println("File not created");
+                    System.exit(0);
+                }
+            }
+            String text=name + " " +id +  " " + city +" "+ salary +" "+joinedDate+"\n";
+            FileOutputStream fileOut =new FileOutputStream(objFile,true);
+            fileOut.write(text.getBytes());
+            fileOut.close();
+            System.out.println("File saved");
+
+        }catch (Exception e){
+            System.out.println("Exception: "+e.toString());
+        }
+    }
+    public void refreshNewFile(String name, String id, String city, String salary, String joinedDate){
+        try {
+            File objFile = new File("C:\\Users\\Lapstore.lk\\IdeaProjects\\information system\\src\\com\\codebind\\Newdata.txt");
+            if(objFile.exists()==false) {
+                if (objFile.createNewFile()) {
+                    System.out.println("File created");
+                } else {
+                    System.out.println("File not created");
+                    System.exit(0);
+                }
+            }
+            String text=name + " " +id +  " " + city +" "+ salary +" "+joinedDate+"\n";
+            FileOutputStream fileOut =new FileOutputStream(objFile,true);
+            fileOut.write(text.getBytes());
+            fileOut.close();
+            System.out.println("File saved");
+
+        }catch (Exception e){
+            System.out.println("Exception: "+e.toString());
+        }
+    }
+
     public void refreshPeopleList(){
         listPeople.removeAllElements();
         System.out.println("Elements removed");
@@ -109,13 +165,6 @@ public class App extends JFrame {
         App screen = new App();
         screen.setVisible(true);
 
-        Person tharushi =new Person("tharushi","1654879","gampaha","156247","2/3/2020");
-        Person chamalsha =new Person("chamalsha","16548279","kadawatha","156247","7/3/2020");
-        Person nisansala =new Person("nisansala","16541279","meegamuwwa","156247","9/3/2020");
-
-        screen.addPerson(tharushi);
-        screen.addPerson(chamalsha);
-        screen.addPerson(nisansala);
 
     }
 }

@@ -110,7 +110,7 @@
               </grid>
             </constraints>
             <properties>
-              <font name="JetBrains Mono" size="10"/>
+              <font name="JetBrains Mono" size="14"/>
               <text value=""/>
             </properties>
           </component>
@@ -121,7 +121,7 @@
               </grid>
             </constraints>
             <properties>
-              <font name="JetBrains Mono" size="10"/>
+              <font name="JetBrains Mono" size="14"/>
             </properties>
           </component>
           <component id="c7762" class="javax.swing.JTextField" binding="cityText">
@@ -131,7 +131,7 @@
               </grid>
             </constraints>
             <properties>
-              <font name="JetBrains Mono" size="10"/>
+              <font name="JetBrains Mono" size="14"/>
             </properties>
           </component>
           <component id="63e15" class="javax.swing.JTextField" binding="salaryText">
@@ -141,7 +141,7 @@
               </grid>
             </constraints>
             <properties>
-              <font name="JetBrains Mono" size="10"/>
+              <font name="JetBrains Mono" size="14"/>
             </properties>
           </component>
           <component id="8eb0" class="javax.swing.JLabel" binding="date">
@@ -160,7 +160,7 @@
               </grid>
             </constraints>
             <properties>
-              <font name="JetBrains Mono" size="10"/>
+              <font name="JetBrains Mono" size="14"/>
             </properties>
           </component>
         </children>
