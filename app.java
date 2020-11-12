@@ -1,15 +1,18 @@
 package com.codebind;
 
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 
-public class app {
+public class App extends JFrame {
     private JButton editButton;
-    private JPanel panel1;
     private JPanel topPanel;
     private JPanel leftPanel;
     private JPanel rightPanel;
-    private JTextArea textArea1;
     private JButton saveNewButton;
     private JLabel name;
     private JTextField nameText;
@@ -21,6 +24,67 @@ public class app {
     private JLabel city;
     private JLabel salary;
     private JLabel date;
+    private JPanel panelMain;
+    private JPanel bottomPanel;
+    private JList peopleList;
+    private ArrayList<Person> people;
+    private DefaultListModel listPeople;
 
+    App(){
+        super("First GUI");
+        this.setContentPane(this.panelMain);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.pack();
+        people = new ArrayList<Person>();
+        listPeople = new DefaultListModel();
+        peopleList.setModel(listPeople);
 
+        editButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+        saveNewButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+
+        peopleList.addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+
+            }
+        });
+    }
+    public void refreshPeopleList(){
+        listPeople.removeAllElements();
+        System.out.println("Elements removed");
+        for(Person p: people){
+            System.out.println("Elements added");
+            listPeople.addElement(p.getName());
+        }
+    }
+    public void addPerson(Person p){
+        people.add(p);
+        refreshPeopleList();
+    }
+
+    public static void main(String[] args) {
+        App screen = new App();
+        screen.setVisible(true);
+
+        Person tharushi =new Person("tharushi","1654879","gampaha",156247,"2/3/2020");
+        Person chamalsha =new Person("chamalsha","16548279","kadawatha",156247,"7/3/2020");
+        Person nisansala =new Person("nisansala","16541279","meegamuwwa",156247,"9/3/2020");
+
+        screen.addPerson(tharushi);
+        screen.addPerson(chamalsha);
+        screen.addPerson(nisansala);
+
+    }
 }
+
+
