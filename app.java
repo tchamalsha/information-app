@@ -38,16 +38,39 @@ public class App extends JFrame {
         people = new ArrayList<Person>();
         listPeople = new DefaultListModel();
         peopleList.setModel(listPeople);
+        editButton.setEnabled(false);
 
         editButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+            int personNumber = peopleList.getSelectedIndex();
+            if(personNumber>=0){
+                Person p=people.get(personNumber);
+                p.setName(nameText.getText());
+                p.setId(idText.getText());
+                p.setCity(cityText.getText());
+                p.setJoinedDate(dateText.getText());
+                refreshPeopleList();
+            }
             }
         });
         saveNewButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                Person p=new Person(
+                        nameText.getText(),
+                        idText.getText(),
+                        cityText.getText(),
+                        salaryText.getText(),
+                        dateText.getText()
+                );
+                people.add(p);
+                refreshPeopleList();
+                nameText.setText("");
+                idText.setText("");
+                cityText.setText("");
+                salaryText.setText("");
+                dateText.setText("");
 
             }
         });
@@ -63,8 +86,9 @@ public class App extends JFrame {
                     cityText.setText(p.getCity());
                     dateText.setText(p.getJoinedDate());
                     salaryText.setText(p.getSalary());
-
-                }
+                    editButton.setEnabled(true);
+                }else
+                    editButton.setEnabled(false);
             }
         });
     }
